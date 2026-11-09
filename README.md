@@ -1,5 +1,7 @@
 # pg-readonly-mcp
 
+[![tests](https://github.com/vinit1009/pg-readonly-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/vinit1009/pg-readonly-mcp/actions/workflows/ci.yml)
+
 A small MCP server that lets Claude query a PostgreSQL database **read-only**, with a table allow-list, a row limit, a statement timeout, and an audit log of every query. Written in Python, runs locally with Claude Desktop over stdio.
 
 Ask Claude *"Which country brought in the most paid revenue in March?"* against the demo database and it calls `list_tables`, `describe_table("orders")`, then `run_query` with something like:
