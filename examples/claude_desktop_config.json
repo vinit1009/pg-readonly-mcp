@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "shop-db": {
+      "command": "/ABSOLUTE/PATH/TO/pg-readonly-mcp/.venv/bin/pg-readonly-mcp",
+      "env": {
+        "MCP_PG_DSN": "postgresql://mcp_readonly:readonly@localhost:54329/shop",
+        "MCP_PG_ALLOWED_TABLES": "public.customers, public.orders, public.order_totals, analytics.*",
+        "MCP_PG_ROW_LIMIT": "200",
+        "MCP_PG_TIMEOUT_MS": "10000"
+      }
+    }
+  }
+}

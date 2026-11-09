@@ -1,0 +1,16 @@
+# Demo database for trying the server: PostgreSQL 17 with a small shop and a read-only role.
+# docker compose up -d  ->  postgresql://mcp_readonly:readonly@localhost:54329/shop
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shop
+    ports:
+      - "127.0.0.1:54329:5432"
+    volumes:
+      - ./examples/seed.sql:/docker-entrypoint-initdb.d/seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d shop"]
+      interval: 2s
+      retries: 30

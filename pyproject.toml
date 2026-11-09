@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pg-readonly-mcp"
+version = "0.1.0"
+description = "Read-only PostgreSQL MCP server for Claude: table allow-list, row limit, statement timeout and an audit log of every query."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Vinit Shah" }]
+keywords = ["mcp", "postgresql", "claude", "model-context-protocol", "read-only"]
+dependencies = [
+  "mcp>=2.3,<3",
+  "psycopg[binary]>=3.2,<4",
+  "sqlglot>=30.30,<31",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+pg-readonly-mcp = "pg_readonly_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pg_readonly_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
